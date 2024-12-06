@@ -1,0 +1,15 @@
+post_install() {
+	echo "---"
+	echo "The nwg-shell supports Sway and, optionally, Hyprland (see the list of optional dependencies required for the Hyprland support)."
+    	echo "You can generate default configurations and styles sheets for each nwg-shell components and for your Wayland compositor by running:"
+	echo
+    	echo "nwg-shell-installer -w (for Sway)"
+    	echo "nwg-shell-installer -w -hypr (for Hyprland)"
+	echo
+	echo "WARNING: The nwg-shell-installer script expects a web browser, a file manager and a text editor to be installed before being run in order to setup keybindings properly. The suggested ones are firefox, thunar and mousepad but other ones can be installed instead." 
+	echo
+	echo "You can also enable the greetd.service (so greetd will be started at boot) and set up the nwg-hello greeter."
+	echo
+	echo "Check the nwg-shell Arch wiki page for more details: https://wiki.archlinux.org/title/Nwg-shell"
+	echo "---"
+}

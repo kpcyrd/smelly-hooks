@@ -1,0 +1,23 @@
+#!/bin/sh
+
+message_server_error_limit() {
+  echo ' > With its 6.1 release `pacman` now supports cache servers, and upstream'
+  echo ' > version is compatible with `pacredir` again. Hooray!'
+
+  if pacman-conf -l | grep -q '^pacredir$'; then
+    echo ' > The custom `pacredir` resository with patched `pacman` is still'
+    echo ' > configured. Please drop it from your configuration!'
+  fi
+}
+
+post_install() {
+  echo ' > For instructions visit: https://github.com/eworm-de/pacredir#usage'
+  message_server_error_limit
+}
+
+post_upgrade() {
+  # return if old package version greater 0.4.7-1...
+  (( $(vercmp $2 '0.4.7-1') > 0 )) && return
+
+  message_server_error_limit
+}

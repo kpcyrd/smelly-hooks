@@ -1,0 +1,4 @@
+post_install() {
+  echo "CONFIG_DEBUG_INFO is disabled on official Arch Linux kernels by default."
+  echo "You need to recompile the kernel with CONFIG_DEBUG_INFO enabled."
+}

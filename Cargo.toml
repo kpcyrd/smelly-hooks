@@ -1,0 +1,21 @@
+[package]
+name = "smelly-hooks"
+version = "0.1.0"
+authors = ["kpcyrd <git@rxv.cc>"]
+license = "GPL-3.0-or-later"
+repository = "https://github.com/kpcyrd/smelly-hooks"
+categories = ["command-line-utilities"]
+edition = "2021"
+
+[dependencies]
+anyhow = "1.0.94"
+clap = { version = "4.5.22", features = ["derive"] }
+colored = "2.1.0"
+env_logger = "0.11.5"
+log = "0.4.22"
+serde = { version = "1.0.215", features = ["derive"] }
+serde_json = "1.0.133"
+yash-syntax = "0.12.1"
+
+[build-dependencies]
+anyhow = "1.0.94"
