@@ -1,18 +1,113 @@
 {
+  "anything-sync-daemon": {
+    "findings": [
+      "Running unrecognized command: \"systemctl is-active asd.service\"",
+      "Running unrecognized command: \"systemctl stop asd.service\"",
+      "Running unrecognized command: \"_stop_asd_service\"",
+      "Running unrecognized command: \"_stop_asd_service\""
+    ]
+  },
+  "archlinux-keyring": {
+    "findings": [
+      "Running unrecognized command: \"usr/bin/pacman-key -l >/dev/null 2>&1\"",
+      "Running unrecognized command: \"usr/bin/pacman-key --populate archlinux\"",
+      "Running unrecognized command: \"sed -i '/^lock-never$/d' etc/pacman.d/gnupg/gpg.conf\"",
+      "Running unrecognized command: \"populate_archlinux\"",
+      "Running unrecognized command: \"populate_archlinux\""
+    ]
+  },
+  "backuppc": {
+    "findings": [
+      "Command name contains variable: \"$(vercmp $2 4.0.0-1)\""
+    ]
+  },
+  "bind": {
+    "findings": [
+      "File write to: \"0\""
+    ]
+  },
+  "bluefish": {
+    "findings": [
+      "Running unrecognized command: \"xmlcatalog --noout --create etc/xml/catalog\"",
+      "Running unrecognized command: \"xmlcatalog --noout --add 'delegateURI' 'http://bluefish.openoffice.nl/ns/bflang/2.0/' /usr/share/xml/bluefish etc/xml/catalog\"",
+      "Running unrecognized command: \"xmlcatalog --noout --del /usr/share/xml/bluefish etc/xml/catalog\""
+    ]
+  },
+  "browserify": {
+    "findings": [
+      "Running unrecognized command: \"find /usr/lib/node_modules/browserify -type d -exec chmod 755 '{}' +\""
+    ]
+  },
   "ca-certificates-utils": {
     "error": "Failed to parse shell script: The command starts with an inappropriate token"
+  },
+  "cacti": {
+    "findings": [
+      "Running unrecognized command: \"local new_package_version=\\\"$1\\\"\"",
+      "Running unrecognized command: \"local old_package_version=\\\"$2\\\"\""
+    ]
+  },
+  "cdemu-daemon": {
+    "findings": [
+      "Running unrecognized command: \"modprobe vhba\""
+    ]
   },
   "cjdns": {
     "error": "Failed to parse shell script: The command starts with an inappropriate token"
   },
+  "cuda": {
+    "findings": [
+      "Running unrecognized command: \"ldconfig -r .\""
+    ]
+  },
+  "cuda-tools": {
+    "findings": [
+      "Running unrecognized command: \"ldconfig -r .\""
+    ]
+  },
   "cups": {
     "error": "Failed to parse shell script: The command starts with an inappropriate token"
+  },
+  "dash": {
+    "findings": [
+      "Running unrecognized command: \"sed -i '/^\\\\/bin\\\\/dash/d' etc/shells\""
+    ]
+  },
+  "dconf": {
+    "findings": [
+      "Running unrecognized command: \"dconf update\""
+    ]
   },
   "dnscrypt-wrapper": {
     "error": "Failed to parse shell script: The command starts with an inappropriate token"
   },
+  "docbook-dsssl": {
+    "findings": [
+      "Running unrecognized command: \"/usr/bin/install-catalog --add /etc/sgml/dsssl-docbook-stylesheets.cat /usr/share/sgml/docbook/dsssl-stylesheets-1.79/catalog\"",
+      "Running unrecognized command: \"/usr/bin/install-catalog --add /etc/sgml/sgml-docbook.cat /etc/sgml/dsssl-docbook-stylesheets.cat\"",
+      "Running unrecognized command: \"/usr/bin/install-catalog --remove /etc/sgml/dsssl-docbook-stylesheets.cat /usr/share/sgml/docbook/dsssl-stylesheets-1.79/catalog\"",
+      "Running unrecognized command: \"/usr/bin/install-catalog --remove /etc/sgml/sgml-docbook.cat /etc/sgml/dsssl-docbook-stylesheets.cat\""
+    ]
+  },
+  "docbook-mathml": {
+    "findings": [
+      "Running unrecognized command: \"xmlcatalog --noout --create etc/xml/catalog\"",
+      "Running unrecognized command: \"xmlcatalog --noout --add \\\"public\\\" \\\"-//OASIS//DTD DocBook MathML Module V1.1CR1//EN\\\" \\\"file:///usr/share/xml/docbook/mathml/1.1CR1/dbmathml.dtd\\\" \\\"etc/xml/catalog\\\"\"",
+      "Running unrecognized command: \"xmlcatalog --noout --add \\\"system\\\" \\\"http://www.oasis-open.org/docbook/xml/mathml/1.1CR1/dbmathml.dtd\\\" \\\"file:///usr/share/xml/docbook/mathml/1.1CR1/dbmathml.dtd\\\" \\\"etc/xml/catalog\\\"\"",
+      "Running unrecognized command: \"xmlcatalog --noout --del \\\"-//OASIS//DTD DocBook MathML Module V1.1CR1//EN\\\" etc/xml/catalog\"",
+      "Running unrecognized command: \"xmlcatalog --noout --del \\\"http://www.oasis-open.org/docbook/xml/mathml/1.1CR1/dbmathml.dtd\\\" etc/xml/catalog\""
+    ]
+  },
   "docbook-sgml": {
     "findings": [
+      "Running unrecognized command: \"add_catalog \\\"${1%-*}\\\"\"",
+      "Running unrecognized command: \"remove_catalog \\\"${2%-*}\\\"\"",
+      "Running unrecognized command: \"add_catalog \\\"${1%-*}\\\"\"",
+      "Running unrecognized command: \"remove_catalog \\\"${1%-*}\\\"\"",
+      "Running unrecognized command: \"install-catalog --add /etc/sgml/sgml-docbook-dtd-$1.cat /usr/share/sgml/docbook-sgml-$1/catalog >/dev/null 2>&1\"",
+      "Running unrecognized command: \"install-catalog --add /etc/sgml/sgml-docbook-dtd-$1.cat /etc/sgml/sgml-docbook.cat >/dev/null 2>&1\"",
+      "Running unrecognized command: \"install-catalog --remove /etc/sgml/sgml-docbook-dtd-$1.cat /usr/share/sgml/docbook-sgml-$1/catalog >/dev/null 2>&1\"",
+      "Running unrecognized command: \"install-catalog --remove /etc/sgml/sgml-docbook-dtd-$1.cat /etc/sgml/sgml-docbook.cat >/dev/null 2>&1\"",
       "Function call outside of any function: \"shift\"",
       "Function call outside of any function: \"$op \\\"$@\\\"\"",
       "Command name contains variable: \"$op\""
@@ -20,9 +115,30 @@
   },
   "docbook-sgml31": {
     "findings": [
+      "Running unrecognized command: \"add_catalog \\\"${1%-*}\\\"\"",
+      "Running unrecognized command: \"remove_catalog \\\"${2%-*}\\\"\"",
+      "Running unrecognized command: \"add_catalog \\\"${1%-*}\\\"\"",
+      "Running unrecognized command: \"remove_catalog \\\"${1%-*}\\\"\"",
+      "Running unrecognized command: \"install-catalog --add /etc/sgml/sgml-docbook-dtd-$1.cat /usr/share/sgml/docbook-sgml-$1/catalog >/dev/null 2>&1\"",
+      "Running unrecognized command: \"install-catalog --add /etc/sgml/sgml-docbook-dtd-$1.cat /etc/sgml/sgml-docbook.cat >/dev/null 2>&1\"",
+      "Running unrecognized command: \"install-catalog --remove /etc/sgml/sgml-docbook-dtd-$1.cat /usr/share/sgml/docbook-sgml-$1/catalog >/dev/null 2>&1\"",
+      "Running unrecognized command: \"install-catalog --remove /etc/sgml/sgml-docbook-dtd-$1.cat /etc/sgml/sgml-docbook.cat >/dev/null 2>&1\"",
       "Function call outside of any function: \"shift\"",
       "Function call outside of any function: \"$op \\\"$@\\\"\"",
       "Command name contains variable: \"$op\""
+    ]
+  },
+  "docbook-xml": {
+    "findings": [
+      "Running unrecognized command: \"mv etc/xml/catalog.preserve etc/xml/catalog\"",
+      "Running unrecognized command: \"xmlcatalog --noout --create etc/xml/catalog\"",
+      "Running unrecognized command: \"xmlcatalog --noout --add \\\"delegatePublic\\\" \\\"-//OASIS//ENTITIES DocBook XML\\\" \\\"file:///etc/xml/docbook-xml\\\" etc/xml/catalog\"",
+      "Running unrecognized command: \"xmlcatalog --noout --add \\\"delegatePublic\\\" \\\"-//OASIS//DTD DocBook XML\\\" \\\"file:///etc/xml/docbook-xml\\\" etc/xml/catalog\"",
+      "Running unrecognized command: \"xmlcatalog --noout --add \\\"delegateSystem\\\" \\\"http://www.oasis-open.org/docbook/\\\" \\\"file:///etc/xml/docbook-xml\\\" etc/xml/catalog\"",
+      "Running unrecognized command: \"xmlcatalog --noout --add \\\"delegateURI\\\" \\\"http://www.oasis-open.org/docbook/\\\" \\\"file:///etc/xml/docbook-xml\\\" etc/xml/catalog\"",
+      "Running unrecognized command: \"xmlcatalog --del \\\"file:///etc/xml/docbook\\\" etc/xml/catalog >etc/xml/catalog.preserve\"",
+      "File write to: \"etc/xml/catalog.preserve\"",
+      "Running unrecognized command: \"xmlcatalog --noout --del file:///etc/xml/docbook-xml etc/xml/catalog\""
     ]
   },
   "docbook-xsl": {
@@ -31,23 +147,260 @@
   "docbook5-xml": {
     "error": "Failed to parse shell script: The command starts with an inappropriate token"
   },
+  "elvish": {
+    "findings": [
+      "Running unrecognized command: \"sed -i -r '/^(\\\\/usr)?\\\\/bin\\\\/elvish$/d' etc/shells\""
+    ]
+  },
+  "fakeroot": {
+    "findings": [
+      "Running unrecognized command: \"usr/bin/ldconfig -r .\"",
+      "Running unrecognized command: \"usr/bin/ldconfig -r .\"",
+      "Running unrecognized command: \"usr/bin/ldconfig -r .\""
+    ]
+  },
+  "fcron": {
+    "findings": [
+      "Running unrecognized command: \"fcrontab -z -u systab\""
+    ]
+  },
+  "filebin": {
+    "findings": [
+      "Running unrecognized command: \"php /usr/share/webapps/filebin/index.php tools update_database\""
+    ]
+  },
+  "fish": {
+    "findings": [
+      "Running unrecognized command: \"sed -ri -e '\\\\|^/usr/bin/fish$|d' -e '\\\\|^/bin/fish$|d' etc/shells\""
+    ]
+  },
+  "fontconfig": {
+    "findings": [
+      "Running unrecognized command: \"find usr/share/fontconfig/conf.default -mindepth 1\"",
+      "Running unrecognized command: \"/usr/share/libalpm/scripts/40-fontconfig-config /etc/fonts/conf.d\"",
+      "File write to: \"0\"",
+      "Running unrecognized command: \"/usr/bin/fc-cache -rs\""
+    ]
+  },
+  "gcr": {
+    "findings": [
+      "Command name contains variable: \"$(vercmp $2 3.41.0-1)\"",
+      "File write to: \"=\"",
+      "Running unrecognized command: \"systemctl --global disable gcr-ssh-agent.socket\""
+    ]
+  },
   "ghc-libs": {
     "error": "Failed to parse shell script: The command starts with an inappropriate token"
   },
   "gimp": {
     "error": "Failed to parse shell script: The command starts with an inappropriate token"
   },
+  "git": {
+    "findings": [
+      "File write to: \"etc/shells\"",
+      "Running unrecognized command: \"sed -i -r '/^\\\\/usr\\\\/bin\\\\/git-shell$/d' etc/shells\""
+    ]
+  },
+  "glhack": {
+    "findings": [
+      "Running unrecognized command: \"install -d -m775 var/games/glhack\"",
+      "Running unrecognized command: \"mv usr/share/glhack/save var/games/glhack\"",
+      "Running unrecognized command: \"install -d -m775 var/games/glhack/save\""
+    ]
+  },
+  "glibc": {
+    "findings": [
+      "Running unrecognized command: \"locale-gen\"",
+      "Running unrecognized command: \"ldconfig -r .\"",
+      "Running unrecognized command: \"iconvconfig\""
+    ]
+  },
+  "gnome-keyring": {
+    "findings": [
+      "Running unrecognized command: \"systemctl --global enable gnome-keyring-daemon.socket\"",
+      "Running unrecognized command: \"systemctl --global enable gnome-keyring-daemon.socket\"",
+      "Running unrecognized command: \"systemctl --global disable gnome-keyring-daemon.socket\""
+    ]
+  },
+  "gnupg": {
+    "findings": [
+      "Running unrecognized command: \"dirmngr </dev/null\"",
+      "Running unrecognized command: \"local unit\""
+    ]
+  },
+  "graphviz": {
+    "findings": [
+      "Running unrecognized command: \"usr/bin/dot -c\""
+    ]
+  },
   "grub": {
     "error": "Failed to parse shell script: The command starts with an inappropriate token"
   },
+  "i3blocks": {
+    "findings": [
+      "File write to: \"0\""
+    ]
+  },
+  "inn": {
+    "findings": [
+      "Running unrecognized command: \"/usr/bin/makedbz -i -o 2>&- >&-\""
+    ]
+  },
+  "java-runtime-common": {
+    "findings": [
+      "Running unrecognized command: \"archlinux-java fix\""
+    ]
+  },
+  "jdk-openjdk": {
+    "findings": [
+      "Running unrecognized command: \"/usr/bin/archlinux-java unset\"",
+      "Running unrecognized command: \"/usr/bin/archlinux-java get\"",
+      "Running unrecognized command: \"/usr/bin/archlinux-java set ${THIS_JDK}\"",
+      "Running unrecognized command: \"/usr/bin/update-ca-trust\"",
+      "Running unrecognized command: \"/usr/bin/archlinux-java set ${THIS_JDK}\"",
+      "Running unrecognized command: \"/usr/bin/update-ca-trust\"",
+      "Running unrecognized command: \"/usr/bin/archlinux-java unset\""
+    ]
+  },
+  "jdk11-openjdk": {
+    "findings": [
+      "Running unrecognized command: \"/usr/bin/archlinux-java unset\"",
+      "Running unrecognized command: \"/usr/bin/archlinux-java get\"",
+      "Running unrecognized command: \"/usr/bin/archlinux-java set ${THIS_JDK}\"",
+      "Running unrecognized command: \"/usr/bin/update-ca-trust\"",
+      "Running unrecognized command: \"/usr/bin/archlinux-java set ${THIS_JDK}\"",
+      "Running unrecognized command: \"/usr/bin/update-ca-trust\"",
+      "Running unrecognized command: \"/usr/bin/archlinux-java unset\""
+    ]
+  },
+  "jdk17-openjdk": {
+    "findings": [
+      "Running unrecognized command: \"/usr/bin/archlinux-java unset\"",
+      "Running unrecognized command: \"/usr/bin/archlinux-java get\"",
+      "Running unrecognized command: \"/usr/bin/archlinux-java set ${THIS_JDK}\"",
+      "Running unrecognized command: \"/usr/bin/update-ca-trust\"",
+      "Running unrecognized command: \"/usr/bin/archlinux-java set ${THIS_JDK}\"",
+      "Running unrecognized command: \"/usr/bin/update-ca-trust\"",
+      "Running unrecognized command: \"/usr/bin/archlinux-java unset\""
+    ]
+  },
+  "jdk21-openjdk": {
+    "findings": [
+      "Running unrecognized command: \"/usr/bin/archlinux-java unset\"",
+      "Running unrecognized command: \"/usr/bin/archlinux-java get\"",
+      "Running unrecognized command: \"/usr/bin/archlinux-java set ${THIS_JDK}\"",
+      "Running unrecognized command: \"/usr/bin/update-ca-trust\"",
+      "Running unrecognized command: \"/usr/bin/archlinux-java set ${THIS_JDK}\"",
+      "Running unrecognized command: \"/usr/bin/update-ca-trust\"",
+      "Running unrecognized command: \"/usr/bin/archlinux-java unset\""
+    ]
+  },
+  "jdk8-openjdk": {
+    "findings": [
+      "Running unrecognized command: \"/usr/bin/archlinux-java unset\"",
+      "Running unrecognized command: \"/usr/bin/archlinux-java get\"",
+      "Running unrecognized command: \"/usr/bin/archlinux-java set ${THIS_JDK}\"",
+      "Running unrecognized command: \"/usr/bin/update-ca-trust\"",
+      "Running unrecognized command: \"/usr/bin/archlinux-java set ${THIS_JDK}\"",
+      "Running unrecognized command: \"/usr/bin/update-ca-trust\"",
+      "Running unrecognized command: \"/usr/bin/archlinux-java unset\"",
+      "Running unrecognized command: \"/usr/bin/archlinux-java set ${THIS_JDK}/jre\""
+    ]
+  },
   "jenkins": {
     "error": "Failed to parse shell script: The command starts with an inappropriate token"
+  },
+  "jre-openjdk": {
+    "findings": [
+      "Running unrecognized command: \"/usr/bin/archlinux-java unset\"",
+      "Running unrecognized command: \"/usr/bin/archlinux-java get\"",
+      "Running unrecognized command: \"/usr/bin/archlinux-java set ${THIS_JRE}\"",
+      "Running unrecognized command: \"/usr/bin/archlinux-java set ${THIS_JRE}\""
+    ]
+  },
+  "jre-openjdk-headless": {
+    "findings": [
+      "Running unrecognized command: \"/usr/bin/archlinux-java unset\"",
+      "Running unrecognized command: \"/usr/bin/archlinux-java get\"",
+      "Running unrecognized command: \"/usr/bin/archlinux-java set ${THIS_JRE}\"",
+      "Running unrecognized command: \"/usr/bin/update-ca-trust\"",
+      "Running unrecognized command: \"/usr/bin/archlinux-java set ${THIS_JRE}\"",
+      "Running unrecognized command: \"/usr/bin/update-ca-trust\"",
+      "Running unrecognized command: \"/usr/bin/archlinux-java unset\""
+    ]
+  },
+  "jre11-openjdk": {
+    "findings": [
+      "Running unrecognized command: \"/usr/bin/archlinux-java unset\"",
+      "Running unrecognized command: \"/usr/bin/archlinux-java get\"",
+      "Running unrecognized command: \"/usr/bin/archlinux-java set ${THIS_JRE}\"",
+      "Running unrecognized command: \"/usr/bin/archlinux-java set ${THIS_JRE}\""
+    ]
+  },
+  "jre11-openjdk-headless": {
+    "findings": [
+      "Running unrecognized command: \"/usr/bin/archlinux-java unset\"",
+      "Running unrecognized command: \"/usr/bin/archlinux-java get\"",
+      "Running unrecognized command: \"/usr/bin/archlinux-java set ${THIS_JRE}\"",
+      "Running unrecognized command: \"/usr/bin/update-ca-trust\"",
+      "Running unrecognized command: \"/usr/bin/archlinux-java set ${THIS_JRE}\"",
+      "Running unrecognized command: \"/usr/bin/update-ca-trust\"",
+      "Running unrecognized command: \"/usr/bin/archlinux-java unset\""
+    ]
+  },
+  "jre17-openjdk": {
+    "findings": [
+      "Running unrecognized command: \"/usr/bin/archlinux-java unset\"",
+      "Running unrecognized command: \"/usr/bin/archlinux-java get\"",
+      "Running unrecognized command: \"/usr/bin/archlinux-java set ${THIS_JRE}\"",
+      "Running unrecognized command: \"/usr/bin/archlinux-java set ${THIS_JRE}\""
+    ]
+  },
+  "jre17-openjdk-headless": {
+    "findings": [
+      "Running unrecognized command: \"/usr/bin/archlinux-java unset\"",
+      "Running unrecognized command: \"/usr/bin/archlinux-java get\"",
+      "Running unrecognized command: \"/usr/bin/archlinux-java set ${THIS_JRE}\"",
+      "Running unrecognized command: \"/usr/bin/update-ca-trust\"",
+      "Running unrecognized command: \"/usr/bin/archlinux-java set ${THIS_JRE}\"",
+      "Running unrecognized command: \"/usr/bin/update-ca-trust\"",
+      "Running unrecognized command: \"/usr/bin/archlinux-java unset\""
+    ]
+  },
+  "jre21-openjdk": {
+    "findings": [
+      "Running unrecognized command: \"/usr/bin/archlinux-java unset\"",
+      "Running unrecognized command: \"/usr/bin/archlinux-java get\"",
+      "Running unrecognized command: \"/usr/bin/archlinux-java set ${THIS_JRE}\"",
+      "Running unrecognized command: \"/usr/bin/archlinux-java set ${THIS_JRE}\""
+    ]
+  },
+  "jre21-openjdk-headless": {
+    "findings": [
+      "Running unrecognized command: \"/usr/bin/archlinux-java unset\"",
+      "Running unrecognized command: \"/usr/bin/archlinux-java get\"",
+      "Running unrecognized command: \"/usr/bin/archlinux-java set ${THIS_JRE}\"",
+      "Running unrecognized command: \"/usr/bin/update-ca-trust\"",
+      "Running unrecognized command: \"/usr/bin/archlinux-java set ${THIS_JRE}\"",
+      "Running unrecognized command: \"/usr/bin/update-ca-trust\"",
+      "Running unrecognized command: \"/usr/bin/archlinux-java unset\""
+    ]
   },
   "jre8-openjdk": {
     "error": "Failed to parse shell script: The parameter expansion is not closed"
   },
   "jre8-openjdk-headless": {
     "error": "Failed to parse shell script: The parameter expansion is not closed"
+  },
+  "keepass": {
+    "findings": [
+      "Running unrecognized command: \"mono --aot -O=all usr/share/keepass/KeePass.exe\""
+    ]
+  },
+  "ksh": {
+    "findings": [
+      "Running unrecognized command: \"sed -i -r '/^(\\\\/usr)?\\\\/bin\\\\/ksh$/d' etc/shells\""
+    ]
   },
   "ksshaskpass": {
     "error": "Failed to parse shell script: The command starts with an inappropriate token"
@@ -58,26 +411,231 @@
   "kubelet": {
     "error": "Failed to parse shell script: The command starts with an inappropriate token"
   },
+  "lib32-fakeroot": {
+    "findings": [
+      "Running unrecognized command: \"usr/bin/ldconfig -r .\"",
+      "Running unrecognized command: \"usr/bin/ldconfig -r .\"",
+      "Running unrecognized command: \"usr/bin/ldconfig -r .\""
+    ]
+  },
+  "lib32-fontconfig": {
+    "findings": [
+      "Running unrecognized command: \"/usr/bin/fc-cache-32 -rs\""
+    ]
+  },
+  "lib32-glibc": {
+    "findings": [
+      "Running unrecognized command: \"iconvconfig --nostdlib -o /usr/lib32/gconv/gconv-modules.cache /usr/lib32/gconv\""
+    ]
+  },
+  "libloc-database": {
+    "findings": [
+      "Running unrecognized command: \"ln -s /usr/share/libloc-location/location.db /var/lib/location/database.db 2>/dev/null\""
+    ]
+  },
+  "libxcrypt": {
+    "findings": [
+      "File write to: \"0\""
+    ]
+  },
+  "libxcrypt-compat": {
+    "findings": [
+      "File write to: \"0\""
+    ]
+  },
+  "lightdm-pantheon-greeter": {
+    "findings": [
+      "Running unrecognized command: \"DCONF_PROFILE='lightdm' dconf update\""
+    ]
+  },
   "luarocks": {
     "error": "Failed to parse shell script: The command starts with an inappropriate token"
+  },
+  "man-db": {
+    "findings": [
+      "Running unrecognized command: \"mandb -c --quiet\""
+    ]
   },
   "matrix-synapse": {
     "error": "Failed to parse shell script: The command starts with an inappropriate token"
   },
+  "mono": {
+    "findings": [
+      "Running unrecognized command: \"cert-sync /etc/ssl/certs/ca-certificates.crt\""
+    ]
+  },
   "munge": {
     "error": "Failed to parse shell script: The command starts with an inappropriate token"
+  },
+  "munin": {
+    "findings": [
+      "Running unrecognized command: \"fc-cache /usr/lib/munin\"",
+      "Running unrecognized command: \"fc-cache /usr/lib/munin\""
+    ]
+  },
+  "mutt": {
+    "findings": [
+      "Command name contains variable: \"$(vercmp \\\"$2\\\" '2.2.9-3')\""
+    ]
+  },
+  "ndisc6": {
+    "findings": [
+      "Command name contains variable: \"\\\"$(vercmp $2 1.0.2-7)\\\"\""
+    ]
   },
   "netctl": {
     "error": "Failed to parse shell script: The command starts with an inappropriate token"
   },
+  "nextcloud": {
+    "findings": [
+      "Running unrecognized command: \"find /usr/share/webapps/nextcloud -type d -exec chgrp root {} \\\\;\""
+    ]
+  },
+  "nftables": {
+    "findings": [
+      "File write to: \"0\""
+    ]
+  },
+  "nrpe": {
+    "findings": [
+      "Running unrecognized command: \"sed -e '/nrpe             5666\\\\/tcp/d' -i /etc/services\""
+    ]
+  },
+  "nspluginwrapper": {
+    "findings": [
+      "Running unrecognized command: \"/usr/bin/nspluginwrapper -u \\\"$i\\\"\""
+    ]
+  },
+  "nuget": {
+    "findings": [
+      "Running unrecognized command: \"cert-sync /etc/ssl/certs/ca-certificates.crt\"",
+      "Running unrecognized command: \"yes\"",
+      "Running unrecognized command: \"certmgr -ssl -m https://go.microsoft.com\"",
+      "Running unrecognized command: \"yes\"",
+      "Running unrecognized command: \"certmgr -ssl -m https://nugetgallery.blob.core.windows.net\"",
+      "Running unrecognized command: \"yes\"",
+      "Running unrecognized command: \"certmgr -ssl -m https://nuget.org\""
+    ]
+  },
+  "nushell": {
+    "findings": [
+      "Running unrecognized command: \"sed -i -r '/^(\\\\/usr)?\\\\/bin\\\\/nu$/d' etc/shells\""
+    ]
+  },
+  "nvidia-utils": {
+    "findings": [
+      "Running unrecognized command: \"systemctl enable nvidia-resume nvidia-hibernate nvidia-suspend\"",
+      "Running unrecognized command: \"systemctl is-enabled --quiet $service\"",
+      "Running unrecognized command: \"systemctl enable $service\"",
+      "Running unrecognized command: \"systemctl disable nvidia-resume nvidia-hibernate nvidia-suspend\""
+    ]
+  },
+  "nvme-cli": {
+    "findings": [
+      "Running unrecognized command: \"nvme gen-hostnqn >/etc/nvme/hostnqn\"",
+      "File write to: \"/etc/nvme/hostnqn\"",
+      "Running unrecognized command: \"uuidgen >/etc/nvme/hostid\"",
+      "File write to: \"/etc/nvme/hostid\""
+    ]
+  },
+  "oil": {
+    "findings": [
+      "Running unrecognized command: \"sed -i -r '/^(\\\\/usr)?\\\\/bin\\\\/osh$/d' etc/shells\""
+    ]
+  },
+  "open-iscsi": {
+    "findings": [
+      "File write to: \"etc/iscsi/initiatorname.iscsi\"",
+      "File write to: \"0\""
+    ]
+  },
+  "openjade": {
+    "findings": [
+      "Running unrecognized command: \"/usr/bin/install-catalog --add /etc/sgml/openjade-1.3.2.cat /usr/share/sgml/openjade-1.3.2/catalog >/dev/null 2>&1\"",
+      "Running unrecognized command: \"/usr/bin/install-catalog --add /etc/sgml/openjade.cat /etc/sgml/openjade-1.3.2.cat >/dev/null 2>&1\"",
+      "Running unrecognized command: \"/usr/bin/install-catalog --remove /etc/sgml/openjade-1.3.2.cat /usr/share/sgml/openjade-1.3.2/catalog >/dev/null 2>&1\"",
+      "Running unrecognized command: \"/usr/bin/install-catalog --remove /etc/sgml/openjade.cat /etc/sgml/openjade-1.3.2.cat >/dev/null 2>&1\""
+    ]
+  },
+  "openvpn": {
+    "findings": [
+      "File write to: \"0\""
+    ]
+  },
   "openvswitch": {
     "error": "Failed to parse shell script: The command starts with an inappropriate token"
+  },
+  "p11-kit": {
+    "findings": [
+      "Running unrecognized command: \"local unit=p11-kit-server.socket dir=/etc/systemd/user/sockets.target.wants\"",
+      "Running unrecognized command: \"ln -sf /usr/lib/systemd/user/$unit $dir/$unit\"",
+      "Running unrecognized command: \"_global_units enable\"",
+      "Running unrecognized command: \"_global_units disable\""
+    ]
+  },
+  "pacredir": {
+    "findings": [
+      "Running unrecognized command: \"pacman-conf -l\"",
+      "Running unrecognized command: \"message_server_error_limit\"",
+      "File write to: \"0\"",
+      "Running unrecognized command: \"message_server_error_limit\""
+    ]
   },
   "perl-xml-libxml": {
     "error": "Failed to parse shell script: The command starts with an inappropriate token"
   },
+  "perl-xml-sax": {
+    "findings": [
+      "Running unrecognized command: \"perl -MXML::SAX -e \\\"XML::SAX->add_parser(q(XML::SAX::PurePerl))->save_parsers()\\\"\"",
+      "Running unrecognized command: \"perl -MXML::SAX -e \\\"XML::SAX->add_parser(q(XML::SAX::PurePerl))->save_parsers()\\\"\""
+    ]
+  },
   "perl-xml-sax-expat": {
     "error": "Failed to parse shell script: The command starts with an inappropriate token"
+  },
+  "pipewire": {
+    "findings": [
+      "Running unrecognized command: \"systemctl --global enable pipewire.socket\"",
+      "Running unrecognized command: \"systemctl --global enable pipewire.socket\"",
+      "Running unrecognized command: \"systemctl --global disable pipewire.socket\""
+    ]
+  },
+  "pipewire-media-session": {
+    "findings": [
+      "Running unrecognized command: \"systemctl --global enable pipewire-media-session.service\"",
+      "Running unrecognized command: \"systemctl --global enable pipewire-media-session.service\"",
+      "Running unrecognized command: \"systemctl --global is-enabled -q pipewire-media-session.service\"",
+      "Running unrecognized command: \"systemctl --global reenable pipewire-media-session.service\"",
+      "Running unrecognized command: \"systemctl --global disable pipewire-media-session.service\""
+    ]
+  },
+  "pipewire-pulse": {
+    "findings": [
+      "Running unrecognized command: \"systemctl --global enable pipewire-pulse.socket\"",
+      "Running unrecognized command: \"systemctl --global enable pipewire-pulse.socket\"",
+      "Running unrecognized command: \"systemctl --global disable pipewire-pulse.socket\""
+    ]
+  },
+  "plan9port": {
+    "findings": [
+      "Running unrecognized command: \"source /etc/profile.d/plan9.sh\""
+    ]
+  },
+  "polkit": {
+    "findings": [
+      "Running unrecognized command: \"install -d -o root -g root -m 755 usr/share/polkit-1/rules.d\""
+    ]
+  },
+  "postfixadmin": {
+    "findings": [
+      "Running unrecognized command: \"local new_package_version=\\\"$1\\\"\"",
+      "Running unrecognized command: \"local old_package_version=\\\"$2\\\"\""
+    ]
+  },
+  "postgresql": {
+    "findings": [
+      "Running unrecognized command: \"/usr/bin/postgresql-check-db-dir /var/lib/postgres/data\""
+    ]
   },
   "profile-sync-daemon": {
     "error": "Failed to parse shell script: The command starts with an inappropriate token"
@@ -85,20 +643,58 @@
   "prosody": {
     "error": "Failed to parse shell script: The parameter expansion is not closed"
   },
+  "pulseaudio": {
+    "findings": [
+      "Running unrecognized command: \"systemctl --global enable pulseaudio.socket\"",
+      "Running unrecognized command: \"systemctl --global enable pulseaudio.socket\"",
+      "Running unrecognized command: \"systemctl --global disable pulseaudio.socket\""
+    ]
+  },
   "puppet": {
     "error": "Failed to parse shell script: The command starts with an inappropriate token"
   },
   "qemu-common": {
     "error": "Failed to parse shell script: The command starts with an inappropriate token"
   },
+  "qemu-guest-agent": {
+    "findings": [
+      "Running unrecognized command: \"systemctl is-enabled --quiet qemu-ga.service\"",
+      "Running unrecognized command: \"systemctl disable qemu-ga.service\"",
+      "Running unrecognized command: \"systemctl enable qemu-guest-agent.service\""
+    ]
+  },
+  "rabbitmq": {
+    "findings": [
+      "Running unrecognized command: \"sed -e \\\"/NODENAME/s/rabbit$/rabbit@$(hostname -s)/\\\" -i /etc/rabbitmq/rabbitmq-env.conf\""
+    ]
+  },
+  "sbt": {
+    "findings": [
+      "Running unrecognized command: \"unlink $conf_link\"",
+      "Running unrecognized command: \"cp /usr/share/sbt/conf/sbtopts $conf_link\""
+    ]
+  },
   "scim": {
     "error": "Failed to parse shell script: The command starts with an inappropriate token"
   },
   "sgml-common": {
     "findings": [
+      "Running unrecognized command: \"add_catalog \\\"${1%-*}\\\"\"",
+      "Running unrecognized command: \"remove_catalog \\\"${2%-*}\\\"\"",
+      "Running unrecognized command: \"add_catalog \\\"${1%-*}\\\"\"",
+      "Running unrecognized command: \"remove_catalog \\\"${1%-*}\\\"\"",
+      "Running unrecognized command: \"install-catalog --add /etc/sgml/sgml-ent.cat /usr/share/sgml/sgml-iso-entities-8879.1986/catalog >/dev/null 2>&1\"",
+      "Running unrecognized command: \"install-catalog --add /etc/sgml/sgml-docbook.cat /etc/sgml/sgml-ent.cat >/dev/null 2>&1\"",
+      "Running unrecognized command: \"install-catalog --remove /etc/sgml/sgml-ent.cat /usr/share/sgml/sgml-iso-entities-8879.1986/catalog >/dev/null 2>&1\"",
+      "Running unrecognized command: \"install-catalog --remove /etc/sgml/sgml-docbook.cat /etc/sgml/sgml-ent.cat >/dev/null 2>&1\"",
       "Function call outside of any function: \"shift\"",
       "Function call outside of any function: \"$op \\\"$@\\\"\"",
       "Command name contains variable: \"$op\""
+    ]
+  },
+  "smbnetfs": {
+    "findings": [
+      "Running unrecognized command: \"/etc/rc.d/smbnetfs stop 2>/dev/null 1>/dev/null\""
     ]
   },
   "snap-pac": {
@@ -110,11 +706,28 @@
   "spamassassin": {
     "error": "Failed to parse shell script: A command is missing after `&&`"
   },
+  "sslh": {
+    "findings": [
+      "Command name contains variable: \"\\\"$(vercmp $2 1.14-1)\\\"\""
+    ]
+  },
   "sstp-client": {
     "findings": [
       "Function call outside of any function: \"shift\"",
       "Function call outside of any function: \"$op \\\"$@\\\"\"",
       "Command name contains variable: \"$op\""
+    ]
+  },
+  "syslinux": {
+    "findings": [
+      "Running unrecognized command: \"mv /boot/syslinux/syslinux.cfg.pacsave /boot/syslinux/syslinux.cfg\"",
+      "Running unrecognized command: \"/usr/bin/syslinux-install_update -s\""
+    ]
+  },
+  "syslog-ng": {
+    "findings": [
+      "Running unrecognized command: \"local orange='\\\\033[1;33m'\"",
+      "Running unrecognized command: \"local reset='\\\\033[0m'\""
     ]
   },
   "systemd": {
@@ -123,10 +736,120 @@
   "taskd": {
     "error": "Failed to parse shell script: The command starts with an inappropriate token"
   },
+  "tcsh": {
+    "findings": [
+      "Running unrecognized command: \"sed -i -r '/^(\\\\/usr)?\\\\/bin\\\\/tcsh$/d' etc/shells\"",
+      "Running unrecognized command: \"sed -i -r '/^(\\\\/usr)?\\\\/bin\\\\/csh$/d' etc/shells\""
+    ]
+  },
+  "telepathy-gabble": {
+    "findings": [
+      "Running unrecognized command: \"killall -HUP dbus-daemon 2>&1\""
+    ]
+  },
+  "telepathy-salut": {
+    "findings": [
+      "Running unrecognized command: \"killall -HUP dbus-daemon 2>&1\""
+    ]
+  },
+  "timeshift": {
+    "findings": [
+      "Running unrecognized command: \"systemctl -q is-enabled cronie.service\""
+    ]
+  },
+  "ttf-tibetan-machine": {
+    "findings": [
+      "Running unrecognized command: \"fc-cache -s >/dev/null\"",
+      "Running unrecognized command: \"mkfontscale usr/share/fonts/TTF\"",
+      "Running unrecognized command: \"mkfontdir usr/share/fonts/TTF\""
+    ]
+  },
+  "tup": {
+    "findings": [
+      "Running unrecognized command: \"suid_msg\""
+    ]
+  },
+  "uptimed": {
+    "findings": [
+      "Running unrecognized command: \"mv var/log/uptimed var/spool/\""
+    ]
+  },
+  "vim-jad": {
+    "findings": [
+      "Running unrecognized command: \"/usr/bin/vim --noplugins -u NONE -U NONE --cmd \\\":helptags /usr/share/vim/vimfiles/doc\\\" --cmd \\\":q\\\" >/dev/null 2>&1\""
+    ]
+  },
+  "virtualbox-ext-vnc": {
+    "findings": [
+      "Running unrecognized command: \"VBoxManage extpack install \\\"${EXTPACK}\\\" --accept-license=\\\"${ACCEPT}\\\" >/dev/null\"",
+      "Running unrecognized command: \"pre_remove \\\"$2\\\"\"",
+      "Running unrecognized command: \"VBoxManage extpack uninstall 'VNC' >/dev/null\""
+    ]
+  },
+  "w3c-mathml2": {
+    "findings": [
+      "Running unrecognized command: \"xmlcatalog --noout --create etc/xml/catalog\"",
+      "Running unrecognized command: \"xmlcatalog --noout --add public \\\"-//W3C//DTD MathML 2.0//EN\\\" \\\"file:///usr/share/xml/w3c/mathml2/mathml2.dtd\\\" etc/xml/catalog\"",
+      "Running unrecognized command: \"xmlcatalog --noout --add public \\\"-//W3C//DTD MathML//EN\\\" \\\"file:///usr/share/xml/w3c/mathml2/mathml2.dtd\\\" etc/xml/catalog\"",
+      "Running unrecognized command: \"xmlcatalog --noout --add system \\\"http://www.w3.org/TR/MathML2/dtd/mathml2.dtd\\\" \\\"file:///usr/share/xml/w3c/mathml2/mathml2.dtd\\\" etc/xml/catalog\"",
+      "Running unrecognized command: \"xmlcatalog --noout --del \\\"-//W3C//DTD MathML 2.0//EN\\\" etc/xml/catalog\"",
+      "Running unrecognized command: \"xmlcatalog --noout --del \\\"-//W3C//DTD MathML//EN\\\" etc/xml/catalog\"",
+      "Running unrecognized command: \"xmlcatalog --noout --del \\\"http://www.w3.org/TR/MathML2/dtd/mathml2.dtd\\\" etc/xml/catalog\""
+    ]
+  },
+  "wire-desktop": {
+    "findings": [
+      "Running unrecognized command: \"_notice\"",
+      "Running unrecognized command: \"_notice\""
+    ]
+  },
+  "wireplumber": {
+    "findings": [
+      "Running unrecognized command: \"systemctl --global enable wireplumber.service\"",
+      "Running unrecognized command: \"systemctl --global reenable wireplumber.service\"",
+      "Running unrecognized command: \"systemctl --global disable wireplumber.service\""
+    ]
+  },
+  "wordpress": {
+    "findings": [
+      "Running unrecognized command: \"install -dm775 /usr/share/webapps/wordpress/wp-content/uploads\"",
+      "Running unrecognized command: \"cp -r /usr/share/webapps/wordpress /usr/share/webapps/wordpress_backup\""
+    ]
+  },
+  "words": {
+    "findings": [
+      "Running unrecognized command: \"local lang\"",
+      "Running unrecognized command: \"pushd /usr/share/dict >/dev/null 2>&1\"",
+      "Running unrecognized command: \"ln -s \\\"./$lang\\\" words\"",
+      "Running unrecognized command: \"popd >/dev/null 2>&1\""
+    ]
+  },
   "wpa_supplicant": {
     "error": "Failed to parse shell script: The command starts with an inappropriate token"
   },
+  "wpscan": {
+    "findings": [
+      "Running unrecognized command: \"/usr/bin/wpscan --update >/dev/null 2>&1\""
+    ]
+  },
+  "xdg-user-dirs": {
+    "findings": [
+      "Running unrecognized command: \"systemctl --global enable xdg-user-dirs-update.service\"",
+      "Running unrecognized command: \"systemctl --global enable xdg-user-dirs-update.service\"",
+      "Running unrecognized command: \"systemctl --global disable xdg-user-dirs-update.service\""
+    ]
+  },
+  "xonsh": {
+    "findings": [
+      "Running unrecognized command: \"sed -i \\\"/^\\\\/usr\\\\/bin\\\\/xonsh$/d\\\" /etc/shells\""
+    ]
+  },
   "xorg-mkfontscale": {
     "error": "Failed to parse shell script: The command starts with an inappropriate token"
+  },
+  "zsh": {
+    "findings": [
+      "Running unrecognized command: \"sed -i -r '/^(\\\\/usr)?\\\\/bin\\\\/zsh$/d' etc/shells\""
+    ]
   }
 }
