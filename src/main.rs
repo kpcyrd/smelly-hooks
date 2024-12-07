@@ -7,6 +7,7 @@ use smelly_hooks::Context;
 use std::fs;
 use std::io;
 use std::path::{Path, PathBuf};
+use std::process;
 
 #[derive(Debug, Parser)]
 #[command(version)]
@@ -58,8 +59,9 @@ fn main() -> Result<()> {
     if args.json {
         serde_json::to_writer(&io::stdout(), &findings)?;
         println!();
+        Ok(())
     } else {
-        for finding in findings {
+        for finding in &findings {
             println!(
                 "{}{}{} {}",
                 "[".bold(),
@@ -68,7 +70,10 @@ fn main() -> Result<()> {
                 finding
             );
         }
+        if findings.is_empty() {
+            Ok(())
+        } else {
+            process::exit(2);
+        }
     }
-
-    Ok(())
 }
