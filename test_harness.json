@@ -41,12 +41,6 @@
   "ca-certificates-utils": {
     "error": "Failed to parse shell script: The command starts with an inappropriate token"
   },
-  "cacti": {
-    "findings": [
-      "Running unrecognized command: \"local new_package_version=\\\"$1\\\"\"",
-      "Running unrecognized command: \"local old_package_version=\\\"$2\\\"\""
-    ]
-  },
   "cdemu-daemon": {
     "findings": [
       "Running unrecognized command: \"modprobe vhba\""
@@ -224,8 +218,7 @@
   },
   "gnupg": {
     "findings": [
-      "Running unrecognized command: \"dirmngr </dev/null\"",
-      "Running unrecognized command: \"local unit\""
+      "Running unrecognized command: \"dirmngr </dev/null\""
     ]
   },
   "graphviz": {
@@ -509,11 +502,8 @@
   "nuget": {
     "findings": [
       "Running unrecognized command: \"cert-sync /etc/ssl/certs/ca-certificates.crt\"",
-      "Running unrecognized command: \"yes\"",
       "Running unrecognized command: \"certmgr -ssl -m https://go.microsoft.com\"",
-      "Running unrecognized command: \"yes\"",
       "Running unrecognized command: \"certmgr -ssl -m https://nugetgallery.blob.core.windows.net\"",
-      "Running unrecognized command: \"yes\"",
       "Running unrecognized command: \"certmgr -ssl -m https://nuget.org\""
     ]
   },
@@ -534,7 +524,6 @@
     "findings": [
       "Running unrecognized command: \"nvme gen-hostnqn >/etc/nvme/hostnqn\"",
       "File write to: \"/etc/nvme/hostnqn\"",
-      "Running unrecognized command: \"uuidgen >/etc/nvme/hostid\"",
       "File write to: \"/etc/nvme/hostid\""
     ]
   },
@@ -567,7 +556,6 @@
   },
   "p11-kit": {
     "findings": [
-      "Running unrecognized command: \"local unit=p11-kit-server.socket dir=/etc/systemd/user/sockets.target.wants\"",
       "Running unrecognized command: \"ln -sf /usr/lib/systemd/user/$unit $dir/$unit\"",
       "Running unrecognized command: \"_global_units enable\"",
       "Running unrecognized command: \"_global_units disable\""
@@ -626,12 +614,6 @@
       "Running unrecognized command: \"install -d -o root -g root -m 755 usr/share/polkit-1/rules.d\""
     ]
   },
-  "postfixadmin": {
-    "findings": [
-      "Running unrecognized command: \"local new_package_version=\\\"$1\\\"\"",
-      "Running unrecognized command: \"local old_package_version=\\\"$2\\\"\""
-    ]
-  },
   "postgresql": {
     "findings": [
       "Running unrecognized command: \"/usr/bin/postgresql-check-db-dir /var/lib/postgres/data\""
@@ -670,7 +652,6 @@
   },
   "sbt": {
     "findings": [
-      "Running unrecognized command: \"unlink $conf_link\"",
       "Running unrecognized command: \"cp /usr/share/sbt/conf/sbtopts $conf_link\""
     ]
   },
@@ -724,12 +705,6 @@
       "Running unrecognized command: \"/usr/bin/syslinux-install_update -s\""
     ]
   },
-  "syslog-ng": {
-    "findings": [
-      "Running unrecognized command: \"local orange='\\\\033[1;33m'\"",
-      "Running unrecognized command: \"local reset='\\\\033[0m'\""
-    ]
-  },
   "systemd": {
     "error": "Failed to parse shell script: The command starts with an inappropriate token"
   },
@@ -740,16 +715,6 @@
     "findings": [
       "Running unrecognized command: \"sed -i -r '/^(\\\\/usr)?\\\\/bin\\\\/tcsh$/d' etc/shells\"",
       "Running unrecognized command: \"sed -i -r '/^(\\\\/usr)?\\\\/bin\\\\/csh$/d' etc/shells\""
-    ]
-  },
-  "telepathy-gabble": {
-    "findings": [
-      "Running unrecognized command: \"killall -HUP dbus-daemon 2>&1\""
-    ]
-  },
-  "telepathy-salut": {
-    "findings": [
-      "Running unrecognized command: \"killall -HUP dbus-daemon 2>&1\""
     ]
   },
   "timeshift": {
@@ -782,7 +747,6 @@
   "virtualbox-ext-vnc": {
     "findings": [
       "Running unrecognized command: \"VBoxManage extpack install \\\"${EXTPACK}\\\" --accept-license=\\\"${ACCEPT}\\\" >/dev/null\"",
-      "Running unrecognized command: \"pre_remove \\\"$2\\\"\"",
       "Running unrecognized command: \"VBoxManage extpack uninstall 'VNC' >/dev/null\""
     ]
   },
@@ -818,10 +782,7 @@
   },
   "words": {
     "findings": [
-      "Running unrecognized command: \"local lang\"",
-      "Running unrecognized command: \"pushd /usr/share/dict >/dev/null 2>&1\"",
-      "Running unrecognized command: \"ln -s \\\"./$lang\\\" words\"",
-      "Running unrecognized command: \"popd >/dev/null 2>&1\""
+      "Running unrecognized command: \"ln -s \\\"./$lang\\\" words\""
     ]
   },
   "wpa_supplicant": {
