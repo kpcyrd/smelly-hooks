@@ -2,18 +2,14 @@
   "anything-sync-daemon": {
     "findings": [
       "Running unrecognized command: \"systemctl is-active asd.service\"",
-      "Running unrecognized command: \"systemctl stop asd.service\"",
-      "Running unrecognized command: \"_stop_asd_service\"",
-      "Running unrecognized command: \"_stop_asd_service\""
+      "Running unrecognized command: \"systemctl stop asd.service\""
     ]
   },
   "archlinux-keyring": {
     "findings": [
       "Running unrecognized command: \"usr/bin/pacman-key -l >/dev/null 2>&1\"",
       "Running unrecognized command: \"usr/bin/pacman-key --populate archlinux\"",
-      "Running unrecognized command: \"sed -i '/^lock-never$/d' etc/pacman.d/gnupg/gpg.conf\"",
-      "Running unrecognized command: \"populate_archlinux\"",
-      "Running unrecognized command: \"populate_archlinux\""
+      "Running unrecognized command: \"sed -i '/^lock-never$/d' etc/pacman.d/gnupg/gpg.conf\""
     ]
   },
   "backuppc": {
@@ -94,10 +90,6 @@
   },
   "docbook-sgml": {
     "findings": [
-      "Running unrecognized command: \"add_catalog \\\"${1%-*}\\\"\"",
-      "Running unrecognized command: \"remove_catalog \\\"${2%-*}\\\"\"",
-      "Running unrecognized command: \"add_catalog \\\"${1%-*}\\\"\"",
-      "Running unrecognized command: \"remove_catalog \\\"${1%-*}\\\"\"",
       "Running unrecognized command: \"install-catalog --add /etc/sgml/sgml-docbook-dtd-$1.cat /usr/share/sgml/docbook-sgml-$1/catalog >/dev/null 2>&1\"",
       "Running unrecognized command: \"install-catalog --add /etc/sgml/sgml-docbook-dtd-$1.cat /etc/sgml/sgml-docbook.cat >/dev/null 2>&1\"",
       "Running unrecognized command: \"install-catalog --remove /etc/sgml/sgml-docbook-dtd-$1.cat /usr/share/sgml/docbook-sgml-$1/catalog >/dev/null 2>&1\"",
@@ -109,10 +101,6 @@
   },
   "docbook-sgml31": {
     "findings": [
-      "Running unrecognized command: \"add_catalog \\\"${1%-*}\\\"\"",
-      "Running unrecognized command: \"remove_catalog \\\"${2%-*}\\\"\"",
-      "Running unrecognized command: \"add_catalog \\\"${1%-*}\\\"\"",
-      "Running unrecognized command: \"remove_catalog \\\"${1%-*}\\\"\"",
       "Running unrecognized command: \"install-catalog --add /etc/sgml/sgml-docbook-dtd-$1.cat /usr/share/sgml/docbook-sgml-$1/catalog >/dev/null 2>&1\"",
       "Running unrecognized command: \"install-catalog --add /etc/sgml/sgml-docbook-dtd-$1.cat /etc/sgml/sgml-docbook.cat >/dev/null 2>&1\"",
       "Running unrecognized command: \"install-catalog --remove /etc/sgml/sgml-docbook-dtd-$1.cat /usr/share/sgml/docbook-sgml-$1/catalog >/dev/null 2>&1\"",
@@ -556,17 +544,13 @@
   },
   "p11-kit": {
     "findings": [
-      "Running unrecognized command: \"ln -sf /usr/lib/systemd/user/$unit $dir/$unit\"",
-      "Running unrecognized command: \"_global_units enable\"",
-      "Running unrecognized command: \"_global_units disable\""
+      "Running unrecognized command: \"ln -sf /usr/lib/systemd/user/$unit $dir/$unit\""
     ]
   },
   "pacredir": {
     "findings": [
       "Running unrecognized command: \"pacman-conf -l\"",
-      "Running unrecognized command: \"message_server_error_limit\"",
-      "File write to: \"0\"",
-      "Running unrecognized command: \"message_server_error_limit\""
+      "File write to: \"0\""
     ]
   },
   "perl-xml-libxml": {
@@ -660,10 +644,6 @@
   },
   "sgml-common": {
     "findings": [
-      "Running unrecognized command: \"add_catalog \\\"${1%-*}\\\"\"",
-      "Running unrecognized command: \"remove_catalog \\\"${2%-*}\\\"\"",
-      "Running unrecognized command: \"add_catalog \\\"${1%-*}\\\"\"",
-      "Running unrecognized command: \"remove_catalog \\\"${1%-*}\\\"\"",
       "Running unrecognized command: \"install-catalog --add /etc/sgml/sgml-ent.cat /usr/share/sgml/sgml-iso-entities-8879.1986/catalog >/dev/null 2>&1\"",
       "Running unrecognized command: \"install-catalog --add /etc/sgml/sgml-docbook.cat /etc/sgml/sgml-ent.cat >/dev/null 2>&1\"",
       "Running unrecognized command: \"install-catalog --remove /etc/sgml/sgml-ent.cat /usr/share/sgml/sgml-iso-entities-8879.1986/catalog >/dev/null 2>&1\"",
@@ -729,11 +709,6 @@
       "Running unrecognized command: \"mkfontdir usr/share/fonts/TTF\""
     ]
   },
-  "tup": {
-    "findings": [
-      "Running unrecognized command: \"suid_msg\""
-    ]
-  },
   "uptimed": {
     "findings": [
       "Running unrecognized command: \"mv var/log/uptimed var/spool/\""
@@ -759,12 +734,6 @@
       "Running unrecognized command: \"xmlcatalog --noout --del \\\"-//W3C//DTD MathML 2.0//EN\\\" etc/xml/catalog\"",
       "Running unrecognized command: \"xmlcatalog --noout --del \\\"-//W3C//DTD MathML//EN\\\" etc/xml/catalog\"",
       "Running unrecognized command: \"xmlcatalog --noout --del \\\"http://www.w3.org/TR/MathML2/dtd/mathml2.dtd\\\" etc/xml/catalog\""
-    ]
-  },
-  "wire-desktop": {
-    "findings": [
-      "Running unrecognized command: \"_notice\"",
-      "Running unrecognized command: \"_notice\""
     ]
   },
   "wireplumber": {

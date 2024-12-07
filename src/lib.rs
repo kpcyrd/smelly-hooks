@@ -5,9 +5,26 @@ pub mod redirect;
 
 use crate::errors::*;
 use std::collections::BTreeSet;
+use std::mem;
+
+#[derive(Debug, PartialEq)]
+pub enum FindingCondition {
+    FunctionUndeclared(String),
+}
+
+impl FindingCondition {
+    pub fn holds(&self, ctx: &Context) -> bool {
+        match self {
+            FindingCondition::FunctionUndeclared(name) => !ctx.declared_functions.contains(name),
+        }
+    }
+}
 
 pub struct Context {
+    findings: Vec<(String, Vec<FindingCondition>)>,
     pub trusted_commands: BTreeSet<&'static str>,
+    pub declared_functions: BTreeSet<String>,
+    pub inside_compound: usize,
 }
 
 impl Default for Context {
@@ -22,14 +39,33 @@ impl Default for Context {
 impl Context {
     pub fn empty() -> Self {
         Context {
+            findings: vec![],
             trusted_commands: BTreeSet::new(),
+            declared_functions: BTreeSet::new(),
+            inside_compound: 0,
         }
     }
 
-    pub fn validate(&self, script: &str) -> Result<Vec<String>> {
+    pub fn is_inside_compound(&self) -> bool {
+        self.inside_compound != 0
+    }
+
+    pub fn finding(&mut self, finding: String) {
+        self.finding_conditional(finding, vec![])
+    }
+
+    pub fn finding_conditional(&mut self, finding: String, conditions: Vec<FindingCondition>) {
+        self.findings.push((finding, conditions));
+    }
+
+    pub fn validate(mut self, script: &str) -> Result<Vec<String>> {
         let parsed = ast::parse(script)?;
-        let mut findings = vec![];
-        ast::validate_ast(self, &parsed, &mut findings, &[])?;
+        ast::validate_ast(&mut self, &parsed, &[])?;
+        let findings = mem::take(&mut self.findings)
+            .into_iter()
+            .filter(|(_, conditions)| conditions.iter().all(|c| c.holds(&self)))
+            .map(|(finding, _)| finding)
+            .collect();
         Ok(findings)
     }
 }
@@ -62,5 +98,8 @@ mod tests {
         })
     }
 
-    include!(concat!(env!("OUT_DIR"), "/generated_tests.rs"));
+    mod archlinux {
+        use super::*;
+        include!(concat!(env!("OUT_DIR"), "/generated_tests.rs"));
+    }
 }

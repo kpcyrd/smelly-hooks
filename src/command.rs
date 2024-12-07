@@ -1,7 +1,7 @@
 use crate::ast;
 use crate::errors::*;
 use crate::redirect::validate_redir;
-use crate::Context;
+use crate::{Context, FindingCondition};
 use yash_syntax::syntax::{self, SimpleCommand, TextUnit, WordUnit};
 
 pub const REASONABLE_BINARIES: &[&str] = &[
@@ -15,10 +15,6 @@ pub const REASONABLE_BINARIES: &[&str] = &[
     "killall",
     "mkdir",
     "pgrep",
-    "post_install",
-    "post_remove",
-    "post_upgrade",
-    "pre_remove",
     "printf",
     "rm",
     "rmdir",
@@ -96,9 +92,8 @@ fn get_subshell_command_subst(command: &SimpleCommand) -> Option<&str> {
 }
 
 pub fn validate_simple_command(
-    ctx: &Context,
+    ctx: &mut Context,
     simple: &SimpleCommand,
-    findings: &mut Vec<String>,
     function_stack: &[String],
 ) -> Result<()> {
     info!("Entering simple command processor");
@@ -113,7 +108,7 @@ pub fn validate_simple_command(
     if let Some(script) = get_subshell_command_subst(simple) {
         debug!("Detected subshell command subst");
         let parsed = ast::parse(script)?;
-        ast::validate_ast(ctx, &parsed, findings, function_stack)?;
+        ast::validate_ast(ctx, &parsed, function_stack)?;
     } else {
         let mut words = simple.words.iter();
         if let Some(first) = words.next() {
@@ -121,19 +116,19 @@ pub fn validate_simple_command(
             debug!("cmd={cmd:?}");
 
             if function_stack.is_empty() {
-                findings.push(format!(
+                ctx.finding(format!(
                     "Function call outside of any function: {:?}",
                     simple.to_string()
                 ));
             }
 
             if word_contains_variables(first) {
-                findings.push(format!("Command name contains variable: {cmd:?}"));
+                ctx.finding(format!("Command name contains variable: {cmd:?}"));
             } else if !ctx.trusted_commands.contains(cmd.as_str()) {
-                findings.push(format!(
-                    "Running unrecognized command: {:?}",
-                    simple.to_string()
-                ));
+                ctx.finding_conditional(
+                    format!("Running unrecognized command: {:?}", simple.to_string()),
+                    vec![FindingCondition::FunctionUndeclared(cmd)],
+                );
             }
 
             for arg in words {
@@ -144,7 +139,7 @@ pub fn validate_simple_command(
     }
 
     for redir in &*simple.redirs {
-        validate_redir(redir, findings)?;
+        validate_redir(ctx, redir)?;
     }
 
     info!("Exiting simple command processor");
@@ -162,7 +157,7 @@ mod tests {
         let binaries = BTreeSet::from_iter(REASONABLE_BINARIES);
         let builtins = BTreeSet::from_iter(REASONABLE_BUILTINS);
         let intersection = binaries.intersection(&builtins).collect::<Vec<_>>();
-        println!("{}", intersection.len());
-        assert_eq!(&intersection, &[] as &[&&&str]);
+        println!("number of intersections: {}", intersection.len());
+        assert_eq!(intersection, Vec::<&&&str>::new());
     }
 }
