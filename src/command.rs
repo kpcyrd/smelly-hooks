@@ -1,7 +1,40 @@
 use crate::ast;
 use crate::errors::*;
 use crate::redirect::validate_redir;
+use crate::Context;
 use yash_syntax::syntax::{self, SimpleCommand, TextUnit, WordUnit};
+
+pub const REASONABLE_BINARIES: &[&str] = &[
+    "/bin/true",
+    "[",
+    "cat",
+    "chmod",
+    "chown",
+    "getent",
+    "grep",
+    "killall",
+    "mkdir",
+    "pgrep",
+    "post_install",
+    "post_remove",
+    "post_upgrade",
+    "pre_remove",
+    "printf",
+    "rm",
+    "rmdir",
+    "setcap",
+    "systemd-sysusers",
+    "touch",
+    "true",
+    "unlink",
+    "usermod",
+    "uuidgen",
+    "vercmp",
+    "yes",
+];
+pub const REASONABLE_BUILTINS: &[&str] = &[
+    ":", "break", "cd", "continue", "echo", "local", "popd", "pushd", "return", "shift",
+];
 
 fn word_contains_variables(word: &syntax::Word) -> bool {
     word.units.iter().any(|unit| match unit {
@@ -63,6 +96,7 @@ fn get_subshell_command_subst(command: &SimpleCommand) -> Option<&str> {
 }
 
 pub fn validate_simple_command(
+    ctx: &Context,
     simple: &SimpleCommand,
     findings: &mut Vec<String>,
     function_stack: &[String],
@@ -79,7 +113,7 @@ pub fn validate_simple_command(
     if let Some(script) = get_subshell_command_subst(simple) {
         debug!("Detected subshell command subst");
         let parsed = ast::parse(script)?;
-        ast::validate_ast(&parsed, findings, function_stack)?;
+        ast::validate_ast(ctx, &parsed, findings, function_stack)?;
     } else {
         let mut words = simple.words.iter();
         if let Some(first) = words.next() {
@@ -95,51 +129,11 @@ pub fn validate_simple_command(
 
             if word_contains_variables(first) {
                 findings.push(format!("Command name contains variable: {cmd:?}"));
-            } else {
-                match cmd.as_str() {
-                    "/bin/true" => (),
-                    ":" => (),
-                    "[" => (),
-                    "break" => (),
-                    "cat" => (),
-                    "cd" => (),
-                    "chmod" => (),
-                    "chown" => (),
-                    "continue" => (),
-                    "echo" => (),
-                    "getent" => (),
-                    "grep" => (),
-                    "killall" => (),
-                    "local" => (),
-                    "mkdir" => (),
-                    "pgrep" => (),
-                    "popd" => (),
-                    "post_install" => (),
-                    "post_remove" => (),
-                    "post_upgrade" => (),
-                    "pre_remove" => (),
-                    "printf" => (),
-                    "pushd" => (),
-                    "return" => (),
-                    "rm" => (),
-                    "rmdir" => (),
-                    "setcap" => (),
-                    "shift" => (),
-                    "systemd-sysusers" => (),
-                    "touch" => (),
-                    "true" => (),
-                    "unlink" => (),
-                    "usermod" => (),
-                    "uuidgen" => (),
-                    "vercmp" => (),
-                    "yes" => (),
-                    _ => {
-                        findings.push(format!(
-                            "Running unrecognized command: {:?}",
-                            simple.to_string()
-                        ));
-                    }
-                }
+            } else if !ctx.trusted_commands.contains(cmd.as_str()) {
+                findings.push(format!(
+                    "Running unrecognized command: {:?}",
+                    simple.to_string()
+                ));
             }
 
             for arg in words {
@@ -156,4 +150,19 @@ pub fn validate_simple_command(
     info!("Exiting simple command processor");
 
     Ok(())
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use std::collections::BTreeSet;
+
+    #[test]
+    fn test_binary_builtin_no_overlap() {
+        let binaries = BTreeSet::from_iter(REASONABLE_BINARIES);
+        let builtins = BTreeSet::from_iter(REASONABLE_BUILTINS);
+        let intersection = binaries.intersection(&builtins).collect::<Vec<_>>();
+        println!("{}", intersection.len());
+        assert_eq!(&intersection, &[] as &[&&&str]);
+    }
 }

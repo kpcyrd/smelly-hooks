@@ -4,12 +4,38 @@ pub mod errors;
 pub mod redirect;
 
 use crate::errors::*;
+use std::collections::BTreeSet;
+
+pub struct Context {
+    pub trusted_commands: BTreeSet<&'static str>,
+}
+
+impl Default for Context {
+    fn default() -> Self {
+        let mut ctx = Self::empty();
+        ctx.trusted_commands.extend(command::REASONABLE_BINARIES);
+        ctx.trusted_commands.extend(command::REASONABLE_BUILTINS);
+        ctx
+    }
+}
+
+impl Context {
+    pub fn empty() -> Self {
+        Context {
+            trusted_commands: BTreeSet::new(),
+        }
+    }
+
+    pub fn validate(&self, script: &str) -> Result<Vec<String>> {
+        let parsed = ast::parse(script)?;
+        let mut findings = vec![];
+        ast::validate_ast(self, &parsed, &mut findings, &[])?;
+        Ok(findings)
+    }
+}
 
 pub fn validate(script: &str) -> Result<Vec<String>> {
-    let parsed = ast::parse(script)?;
-    let mut findings = vec![];
-    ast::validate_ast(&parsed, &mut findings, &[])?;
-    Ok(findings)
+    Context::default().validate(script)
 }
 
 #[cfg(test)]
