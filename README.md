@@ -8,17 +8,17 @@ This is an experimental tool using symbolic execution to try to determine a pacm
 
 ## Reasoning
 
-There are some operations that are considered reasonable and even though they may cause data loss or create local-privilege-escalation issues, they are considered not RCE-able:
+There are some operations that are considered reasonable, even though they may cause data loss or create local-privilege-escalation issues, however they are considered not RCE-able on their own:
 
-- Changing file or permissions (chmod)
-- Changing file owners or groups (chown/chgrp)
+- Changing file/directory permissions (chmod)
+- Changing file/directory owners or groups (chown/chgrp)
 - Creating directories (mkdir)
 - Creating empty files or changing their mtime (touch)
 - Creating system users
 - Deleting files or directories (rm/rmdir)
 - Setting file capabilities on binaries (setcap)
 
-This tool tries to flag "zero click" exploitation (not counting the start of the installation), with installation of the package leading to code execution with no further interaction (like manually running one of it's binaries). The package content itself may still still create files leading to code execution, like extracting a cronjob into the filesystem's configuration directory, this is considered out of scope.
+This tool tries to flag "zero click" exploitation (not counting the start of the installation), with installation of the package leading to direct or indirect code execution with no further interaction (like manually running one of it's binaries). The package content itself may still still create files leading to code execution, like extracting a cronjob into the filesystem's configuration directory, this is considered out-of-scope for install-hook linting however.
 
 ## Bypasses
 
