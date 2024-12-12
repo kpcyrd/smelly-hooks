@@ -26,7 +26,7 @@ The following people found bypasses:
 
 *Nobody yet, be the first! ✨*
 
-This project follows a full-disclosure policy, if you find one please open a github issue.
+This project follows a full-disclosure policy, if you find one please open a github issue. To be considered a flawless bypass, the linter must not output any warnings and return an exit code of 0.
 
 ## License
 
