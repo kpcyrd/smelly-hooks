@@ -24,7 +24,8 @@ This tool tries to flag "zero click" exploitation (not counting the start of the
 
 The following people found bypasses:
 
-*Nobody yet, be the first! ✨*
+- 2024-12-12 - [anthraxx](https://github.com/anthraxx): subshell command substitutions weren't correctly processed for variable assignments
+- *Future you, maybe? ✨*
 
 This project follows a full-disclosure policy, if you find one please open a github issue. To be considered a flawless bypass, the linter must not output any warnings and return an exit code of 0.
 

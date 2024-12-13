@@ -522,6 +522,7 @@
   },
   "open-iscsi": {
     "findings": [
+      "Running unrecognized command: \"iscsi-iname\"",
       "File write to: \"etc/iscsi/initiatorname.iscsi\"",
       "File write to: \"0\""
     ]
@@ -721,6 +722,7 @@
   },
   "virtualbox-ext-vnc": {
     "findings": [
+      "Running unrecognized command: \"bsdtar --to-stdout -xf \\\"${EXTPACK}\\\" ./ExtPack-license.txt\"",
       "Running unrecognized command: \"VBoxManage extpack install \\\"${EXTPACK}\\\" --accept-license=\\\"${ACCEPT}\\\" >/dev/null\"",
       "Running unrecognized command: \"VBoxManage extpack uninstall 'VNC' >/dev/null\""
     ]

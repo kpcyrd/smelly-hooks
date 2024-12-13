@@ -2,7 +2,7 @@ use crate::ast;
 use crate::errors::*;
 use crate::redirect::validate_redir;
 use crate::{Context, FindingCondition};
-use yash_syntax::syntax::{self, SimpleCommand, TextUnit, WordUnit};
+use yash_syntax::syntax::{self, SimpleCommand, TextUnit, Value, Word, WordUnit};
 
 pub const REASONABLE_BINARIES: &[&str] = &[
     "/bin/true",
@@ -12,6 +12,8 @@ pub const REASONABLE_BINARIES: &[&str] = &[
     "chown",
     "getent",
     "grep",
+    "head",
+    "hostname",
     "killall",
     "mkdir",
     "pgrep",
@@ -19,9 +21,11 @@ pub const REASONABLE_BINARIES: &[&str] = &[
     "rm",
     "rmdir",
     "setcap",
+    "sha256sum",
     "systemd-sysusers",
     "touch",
     "true",
+    "uname",
     "unlink",
     "usermod",
     "uuidgen",
@@ -53,6 +57,7 @@ fn text_unit_contains_variables(unit: &TextUnit) -> bool {
     }
 }
 
+// TODO: this function can likely get removed, but code needs some rewriting
 fn get_subshell_command_subst(command: &SimpleCommand) -> Option<&str> {
     if !command.assigns.is_empty() {
         return None;
@@ -91,18 +96,68 @@ fn get_subshell_command_subst(command: &SimpleCommand) -> Option<&str> {
     }
 }
 
+fn validate_text_unit(ctx: &mut Context, text: &TextUnit, function_stack: &[String]) -> Result<()> {
+    if let TextUnit::CommandSubst { content, .. } = text {
+        let parsed = ast::parse(content)?;
+        ast::validate_ast(ctx, &parsed, function_stack)?;
+    }
+
+    Ok(())
+}
+
+fn validate_word(ctx: &mut Context, word: &Word, function_stack: &[String]) -> Result<()> {
+    for unit in &word.units {
+        match unit {
+            WordUnit::Unquoted(text) => validate_text_unit(ctx, text, function_stack)?,
+            WordUnit::DoubleQuote(text) => {
+                for unit in &text.0 {
+                    validate_text_unit(ctx, &unit, function_stack)?;
+                }
+            }
+            _ => (),
+        }
+    }
+
+    Ok(())
+}
+
+fn validate_subshell_command_subst(
+    ctx: &mut Context,
+    simple: &SimpleCommand,
+    function_stack: &[String],
+) -> Result<()> {
+    for word in &simple.words {
+        validate_word(ctx, word, function_stack)?;
+    }
+
+    Ok(())
+}
+
 pub fn validate_simple_command(
     ctx: &mut Context,
     simple: &SimpleCommand,
     function_stack: &[String],
 ) -> Result<()> {
     info!("Entering simple command processor");
+    trace!("simple={simple:?}");
 
     for assign in &simple.assigns {
         let name = assign.name.to_string();
         let value = assign.value.to_string();
         debug!("assign: {name:?}={value:?}");
+        match &assign.value {
+            Value::Scalar(word) => {
+                validate_word(ctx, word, function_stack)?;
+            }
+            Value::Array(words) => {
+                for word in words {
+                    validate_word(ctx, word, function_stack)?;
+                }
+            }
+        }
     }
+
+    validate_subshell_command_subst(ctx, &simple, &function_stack)?;
 
     // TODO: CommandSubst is not picked up if part of an arithmetic expression
     if let Some(script) = get_subshell_command_subst(simple) {
@@ -150,6 +205,7 @@ pub fn validate_simple_command(
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::validate;
     use std::collections::BTreeSet;
 
     #[test]
@@ -159,5 +215,54 @@ mod tests {
         let intersection = binaries.intersection(&builtins).collect::<Vec<_>>();
         println!("number of intersections: {}", intersection.len());
         assert_eq!(intersection, Vec::<&&&str>::new());
+    }
+
+    #[test]
+    fn test_assign_subshell_command_subst() {
+        let script = r#"
+        post_install() {
+            cmd="$(date > /tmp/pwn)"
+        }
+
+        post_upgrade() {
+          post_install
+        }
+        "#;
+        let findings = validate(script).unwrap();
+        assert_eq!(
+            findings,
+            vec![
+                "Running unrecognized command: \"date >/tmp/pwn\"",
+                "File write to: \"/tmp/pwn\""
+            ]
+        );
+    }
+
+    #[test]
+    fn test_misc_subshell_command_subst() {
+        let script = r#"
+        post_install() {
+            x=$(echo hax > /etc/hax1)
+            x=""$(echo hax > /etc/hax2)
+            echo ""$(echo hax > /etc/hax3)
+            echo "" $(echo hax > /etc/hax4)
+            echo "" "$(echo hax > /etc/hax5)"''$(echo hax > /etc/hax6)
+            arr=(a b $(echo hax > /etc/hax7) ''"$(echo hax > /etc/hax8)"'')
+        }
+        "#;
+        let findings = validate(script).unwrap();
+        assert_eq!(
+            findings,
+            vec![
+                "File write to: \"/etc/hax1\"",
+                "File write to: \"/etc/hax2\"",
+                "File write to: \"/etc/hax3\"",
+                "File write to: \"/etc/hax4\"",
+                "File write to: \"/etc/hax5\"",
+                "File write to: \"/etc/hax6\"",
+                "File write to: \"/etc/hax7\"",
+                "File write to: \"/etc/hax8\"",
+            ]
+        );
     }
 }
