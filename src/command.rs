@@ -41,6 +41,7 @@ fn word_contains_variables(word: &syntax::Word) -> bool {
         WordUnit::Unquoted(unit) => text_unit_contains_variables(unit),
         WordUnit::SingleQuote(_) => false,
         WordUnit::DoubleQuote(text) => text.0.iter().any(text_unit_contains_variables),
+        WordUnit::DollarSingleQuote(_) => false,
         WordUnit::Tilde(_) => false,
     })
 }
@@ -114,7 +115,7 @@ fn validate_word(ctx: &mut Context, word: &Word, function_stack: &[String]) -> R
                     validate_text_unit(ctx, &unit, function_stack)?;
                 }
             }
-            _ => (),
+            WordUnit::SingleQuote(_) | WordUnit::DollarSingleQuote(_) | WordUnit::Tilde(_) => (),
         }
     }
 

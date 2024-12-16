@@ -35,7 +35,7 @@
     ]
   },
   "ca-certificates-utils": {
-    "error": "Failed to parse shell script: The command starts with an inappropriate token"
+    "error": "Failed to parse shell script: the command starts with an inappropriate token"
   },
   "cdemu-daemon": {
     "findings": [
@@ -43,7 +43,7 @@
     ]
   },
   "cjdns": {
-    "error": "Failed to parse shell script: The command starts with an inappropriate token"
+    "error": "Failed to parse shell script: the command starts with an inappropriate token"
   },
   "cuda": {
     "findings": [
@@ -56,7 +56,7 @@
     ]
   },
   "cups": {
-    "error": "Failed to parse shell script: The command starts with an inappropriate token"
+    "error": "Failed to parse shell script: the command starts with an inappropriate token"
   },
   "dash": {
     "findings": [
@@ -69,7 +69,7 @@
     ]
   },
   "dnscrypt-wrapper": {
-    "error": "Failed to parse shell script: The command starts with an inappropriate token"
+    "error": "Failed to parse shell script: the command starts with an inappropriate token"
   },
   "docbook-dsssl": {
     "findings": [
@@ -124,10 +124,10 @@
     ]
   },
   "docbook-xsl": {
-    "error": "Failed to parse shell script: The command starts with an inappropriate token"
+    "error": "Failed to parse shell script: the command starts with an inappropriate token"
   },
   "docbook5-xml": {
-    "error": "Failed to parse shell script: The command starts with an inappropriate token"
+    "error": "Failed to parse shell script: the command starts with an inappropriate token"
   },
   "elvish": {
     "findings": [
@@ -172,10 +172,10 @@
     ]
   },
   "ghc-libs": {
-    "error": "Failed to parse shell script: The command starts with an inappropriate token"
+    "error": "Failed to parse shell script: the command starts with an inappropriate token"
   },
   "gimp": {
-    "error": "Failed to parse shell script: The command starts with an inappropriate token"
+    "error": "Failed to parse shell script: the command starts with an inappropriate token"
   },
   "git": {
     "findings": [
@@ -215,7 +215,7 @@
     ]
   },
   "grub": {
-    "error": "Failed to parse shell script: The command starts with an inappropriate token"
+    "error": "Failed to parse shell script: the command starts with an inappropriate token"
   },
   "i3blocks": {
     "findings": [
@@ -289,7 +289,7 @@
     ]
   },
   "jenkins": {
-    "error": "Failed to parse shell script: The command starts with an inappropriate token"
+    "error": "Failed to parse shell script: the command starts with an inappropriate token"
   },
   "jre-openjdk": {
     "findings": [
@@ -368,10 +368,10 @@
     ]
   },
   "jre8-openjdk": {
-    "error": "Failed to parse shell script: The parameter expansion is not closed"
+    "error": "Failed to parse shell script: the parameter expansion is not closed"
   },
   "jre8-openjdk-headless": {
-    "error": "Failed to parse shell script: The parameter expansion is not closed"
+    "error": "Failed to parse shell script: the parameter expansion is not closed"
   },
   "keepass": {
     "findings": [
@@ -384,13 +384,13 @@
     ]
   },
   "ksshaskpass": {
-    "error": "Failed to parse shell script: The command starts with an inappropriate token"
+    "error": "Failed to parse shell script: the command starts with an inappropriate token"
   },
   "kubeadm": {
-    "error": "Failed to parse shell script: The command starts with an inappropriate token"
+    "error": "Failed to parse shell script: the command starts with an inappropriate token"
   },
   "kubelet": {
-    "error": "Failed to parse shell script: The command starts with an inappropriate token"
+    "error": "Failed to parse shell script: the command starts with an inappropriate token"
   },
   "lib32-fakeroot": {
     "findings": [
@@ -430,7 +430,7 @@
     ]
   },
   "luarocks": {
-    "error": "Failed to parse shell script: The command starts with an inappropriate token"
+    "error": "Failed to parse shell script: the command starts with an inappropriate token"
   },
   "man-db": {
     "findings": [
@@ -438,7 +438,7 @@
     ]
   },
   "matrix-synapse": {
-    "error": "Failed to parse shell script: The command starts with an inappropriate token"
+    "error": "Failed to parse shell script: the command starts with an inappropriate token"
   },
   "mono": {
     "findings": [
@@ -446,7 +446,7 @@
     ]
   },
   "munge": {
-    "error": "Failed to parse shell script: The command starts with an inappropriate token"
+    "error": "Failed to parse shell script: the command starts with an inappropriate token"
   },
   "munin": {
     "findings": [
@@ -465,7 +465,7 @@
     ]
   },
   "netctl": {
-    "error": "Failed to parse shell script: The command starts with an inappropriate token"
+    "error": "Failed to parse shell script: the command starts with an inappropriate token"
   },
   "nextcloud": {
     "findings": [
@@ -541,7 +541,7 @@
     ]
   },
   "openvswitch": {
-    "error": "Failed to parse shell script: The command starts with an inappropriate token"
+    "error": "Failed to parse shell script: the command starts with an inappropriate token"
   },
   "p11-kit": {
     "findings": [
@@ -555,7 +555,7 @@
     ]
   },
   "perl-xml-libxml": {
-    "error": "Failed to parse shell script: The command starts with an inappropriate token"
+    "error": "Failed to parse shell script: the command starts with an inappropriate token"
   },
   "perl-xml-sax": {
     "findings": [
@@ -564,7 +564,7 @@
     ]
   },
   "perl-xml-sax-expat": {
-    "error": "Failed to parse shell script: The command starts with an inappropriate token"
+    "error": "Failed to parse shell script: the command starts with an inappropriate token"
   },
   "pipewire": {
     "findings": [
@@ -605,10 +605,10 @@
     ]
   },
   "profile-sync-daemon": {
-    "error": "Failed to parse shell script: The command starts with an inappropriate token"
+    "error": "Failed to parse shell script: the command starts with an inappropriate token"
   },
   "prosody": {
-    "error": "Failed to parse shell script: The parameter expansion is not closed"
+    "error": "Failed to parse shell script: the parameter expansion is not closed"
   },
   "pulseaudio": {
     "findings": [
@@ -618,10 +618,10 @@
     ]
   },
   "puppet": {
-    "error": "Failed to parse shell script: The command starts with an inappropriate token"
+    "error": "Failed to parse shell script: the command starts with an inappropriate token"
   },
   "qemu-common": {
-    "error": "Failed to parse shell script: The command starts with an inappropriate token"
+    "error": "Failed to parse shell script: the command starts with an inappropriate token"
   },
   "qemu-guest-agent": {
     "findings": [
@@ -641,7 +641,7 @@
     ]
   },
   "scim": {
-    "error": "Failed to parse shell script: The command starts with an inappropriate token"
+    "error": "Failed to parse shell script: the command starts with an inappropriate token"
   },
   "sgml-common": {
     "findings": [
@@ -660,13 +660,13 @@
     ]
   },
   "snap-pac": {
-    "error": "Failed to parse shell script: The command starts with an inappropriate token"
+    "error": "Failed to parse shell script: the command starts with an inappropriate token"
   },
   "snap-sync": {
-    "error": "Failed to parse shell script: The command starts with an inappropriate token"
+    "error": "Failed to parse shell script: the command starts with an inappropriate token"
   },
   "spamassassin": {
-    "error": "Failed to parse shell script: A command is missing after `&&`"
+    "error": "Failed to parse shell script: a command is missing after `&&`"
   },
   "sslh": {
     "findings": [
@@ -687,10 +687,10 @@
     ]
   },
   "systemd": {
-    "error": "Failed to parse shell script: The command starts with an inappropriate token"
+    "error": "Failed to parse shell script: the command starts with an inappropriate token"
   },
   "taskd": {
-    "error": "Failed to parse shell script: The command starts with an inappropriate token"
+    "error": "Failed to parse shell script: the command starts with an inappropriate token"
   },
   "tcsh": {
     "findings": [
@@ -757,7 +757,7 @@
     ]
   },
   "wpa_supplicant": {
-    "error": "Failed to parse shell script: The command starts with an inappropriate token"
+    "error": "Failed to parse shell script: the command starts with an inappropriate token"
   },
   "wpscan": {
     "findings": [
@@ -777,7 +777,7 @@
     ]
   },
   "xorg-mkfontscale": {
-    "error": "Failed to parse shell script: The command starts with an inappropriate token"
+    "error": "Failed to parse shell script: the command starts with an inappropriate token"
   },
   "zsh": {
     "findings": [
