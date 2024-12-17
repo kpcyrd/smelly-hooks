@@ -2,7 +2,7 @@ use crate::ast;
 use crate::errors::*;
 use crate::redirect::validate_redir;
 use crate::{Context, FindingCondition};
-use yash_syntax::syntax::{self, SimpleCommand, TextUnit, Value, Word, WordUnit};
+use yash_syntax::syntax::{self, BackquoteUnit, SimpleCommand, TextUnit, Value, Word, WordUnit};
 
 pub const REASONABLE_BINARIES: &[&str] = &[
     "/bin/true",
@@ -98,9 +98,25 @@ fn get_subshell_command_subst(command: &SimpleCommand) -> Option<&str> {
 }
 
 fn validate_text_unit(ctx: &mut Context, text: &TextUnit, function_stack: &[String]) -> Result<()> {
-    if let TextUnit::CommandSubst { content, .. } = text {
-        let parsed = ast::parse(content)?;
-        ast::validate_ast(ctx, &parsed, function_stack)?;
+    trace!("text unit={text:?}");
+    match text {
+        TextUnit::CommandSubst { content, .. } => {
+            let parsed = ast::parse(content)?;
+            ast::validate_ast(ctx, &parsed, function_stack)?;
+        }
+        TextUnit::Backquote { content, .. } => {
+            let mut script = String::new();
+            for unit in content {
+                match unit {
+                    BackquoteUnit::Literal(c) => script.push(*c),
+                    BackquoteUnit::Backslashed(c) => script.push(*c),
+                }
+            }
+            trace!("Assembled script from backticks: {script:?}");
+            let parsed = ast::parse(&script)?;
+            ast::validate_ast(ctx, &parsed, function_stack)?;
+        }
+        _ => (),
     }
 
     Ok(())
@@ -112,7 +128,7 @@ fn validate_word(ctx: &mut Context, word: &Word, function_stack: &[String]) -> R
             WordUnit::Unquoted(text) => validate_text_unit(ctx, text, function_stack)?,
             WordUnit::DoubleQuote(text) => {
                 for unit in &text.0 {
-                    validate_text_unit(ctx, &unit, function_stack)?;
+                    validate_text_unit(ctx, unit, function_stack)?;
                 }
             }
             WordUnit::SingleQuote(_) | WordUnit::DollarSingleQuote(_) | WordUnit::Tilde(_) => (),
@@ -158,7 +174,7 @@ pub fn validate_simple_command(
         }
     }
 
-    validate_subshell_command_subst(ctx, &simple, &function_stack)?;
+    validate_subshell_command_subst(ctx, simple, function_stack)?;
 
     // TODO: CommandSubst is not picked up if part of an arithmetic expression
     if let Some(script) = get_subshell_command_subst(simple) {
@@ -249,6 +265,34 @@ mod tests {
             echo "" $(echo hax > /etc/hax4)
             echo "" "$(echo hax > /etc/hax5)"''$(echo hax > /etc/hax6)
             arr=(a b $(echo hax > /etc/hax7) ''"$(echo hax > /etc/hax8)"'')
+        }
+        "#;
+        let findings = validate(script).unwrap();
+        assert_eq!(
+            findings,
+            vec![
+                "File write to: \"/etc/hax1\"",
+                "File write to: \"/etc/hax2\"",
+                "File write to: \"/etc/hax3\"",
+                "File write to: \"/etc/hax4\"",
+                "File write to: \"/etc/hax5\"",
+                "File write to: \"/etc/hax6\"",
+                "File write to: \"/etc/hax7\"",
+                "File write to: \"/etc/hax8\"",
+            ]
+        );
+    }
+
+    #[test]
+    fn test_misc_backticks() {
+        let script = r#"
+        post_install() {
+            x=`echo \\'hax\\' > /etc/hax1`
+            x=""`echo hax > /etc/hax2`
+            echo ""`echo hax > /etc/hax3`
+            echo "" `echo hax > /etc/hax4`
+            echo "" "`echo hax > /etc/hax5`"''`echo hax > /etc/hax6`
+            arr=(a b `echo hax > /etc/hax7` ''"`echo hax > /etc/hax8`"'')
         }
         "#;
         let findings = validate(script).unwrap();
