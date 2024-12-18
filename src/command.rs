@@ -310,4 +310,20 @@ mod tests {
             ]
         );
     }
+
+    #[test]
+    fn test_subshell_fd() {
+        // this can not be parsed yet
+        let script = r#"
+        post_install() {
+            cat <(echo hax > /etc/hax1)
+        }
+        "#;
+        let err = validate(script).err().unwrap();
+        // assert on the error so we notice if this ever changes
+        assert_eq!(
+            err.to_string(),
+            "Failed to parse shell script: the command starts with an inappropriate token"
+        );
+    }
 }
